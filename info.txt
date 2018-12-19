@@ -1,0 +1,46 @@
+Regular Expressions
+--------------------
+
+What are Regular Expressions/ RegEx? 
+-------------------------------------
+- Allows us to check a series of characters for 'matches'
+- e.g. It allows us to check a form filed to try and match a vaid email address
+     - It must have an @ symbol at a certain position
+     - it must end in an extension like .com or .org or .co.uk
+-----------------------------------------------------------------------------------------------------
+
+Try sample regex at - https://regex101.com
+-----------------------------------------------------------------------------------------------------
+
+Sample RegEx charatcer sets:
+----------------------------
+
+- A RegEx always starts & ends with "/"  - / RegEx /
+- A RegEx is "CASE SENSITIVE"
+- A character set is always mentioned within "[]"
+- A character that needs to be excluded needs to mentioned with a "^" symbol 
+  inside the character set - "[^ab]"
+
+Eg: RegEx to include 'a/b' in the first position & must have '000' - /[ab]000/
+    RegEx to not include 'a/b' in the first position & must have '123' - /[^ab]123/
+-----------------------------------------------------------------------------------------------------
+
+Ranges:
+--------
+
+- A range of characters can be mentioned inside a character set to match a set of characters
+- Eg: RegEx to match characters from "a to z" in the first position - /[a-z]ABC000/
+- The range can be asper the user's wish - "[a-h]", "[A-Z]", can also contain numbers - "[0-9]"
+-----------------------------------------------------------------------------------------------------
+
+Repeating characters:
+---------------------
+
+- If a certain characters need to repeated, it can be acheived in a few ways
+- Eg-1: /[0-9]+/ - This RegEx will match 0-9 in any position unlimited times
+- Eg-2: /[0-9]{11}/ - This will match a 11 digit number
+- Eg-3: /[0-9]{5-8}/ - This will match a 5,6,7,8 digit numbers
+- Eg-4: /[0-9]{5,}/ - This will match a number that is 5 digits upto infinity
+This is applicable for letters as well
+-----------------------------------------------------------------------------------------------------
+
