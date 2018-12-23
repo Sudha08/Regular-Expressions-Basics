@@ -44,3 +44,57 @@ Repeating characters:
 This is applicable for letters as well
 -----------------------------------------------------------------------------------------------------
 
+Meta characters:
+----------------
+
+- \d match any digit character (same as [0-9])
+- \w match any word character (a-z A-Z 0-9 and _'s) -> _'s  - unserscores
+- \s match a whitespace character (spaces, tabs, etc)
+- \t match a tab character omly
+
+   Eg: d --> matches the literal character , 'd'
+       \d --> matches any digit character
+
+The '\' is the escape character which differentiates whether a character is a meta character
+or a normal literal
+
+For the list of meta characters refer - https://www.w3schools.com/jsref/jsref_obj_regexp.asp
+
+    Eg-1: \d\s\w - This RegEx will match a "digit" in the "first" position, a "space" in the "second"
+                   & a "word" in the "third" - 1 a, 1   a, 1 2, etc. (w - can also contain numbers & _s)
+
+    Eg-2: \d{3}\s\w{5} - This RegEx will match "digits" in the "first 3" positions 
+                         followed by a "space" and "words" in the "last 5" positions
+                         - 567 hello, 213 hell1, etc.
+-----------------------------------------------------------------------------------------------------
+
+Special characters:
+-------------------
+
+- '+'  - The one-or-more quantifier (will expect atleast one character)
+- '\'  - The escape character
+- '[]' - The character set
+- '[^]'- The negate symbol in a character set
+- '?'  - The zero-or-one quantifier (makes a preceding char optional)
+- '.'  - Any character whatsoever (except newline character)
+- '*'  - The 0-or-more quantifier (a bit like '+')
+
+If we want to use the literal character of each of them we have to escape them first using '/'
+
+  Eg-1: he?llo? - This RegEx will match the word 'hello' where 'e' & 'o' can be optional
+                   - hll, hllo, hell
+  Eg-2: a[a-z]? - This RegEx will match a word starting with 'a' with the second letter optional
+                   - a, aa, at, etc.
+  Eg-3: car.    - This RegEx will match a word staring with 'car' and followed by any character
+                   - car1, cart, car$, car., etc. - 'car' won't match
+  Eg-4: a[a-z]* - This RegEx will match a word starting with 'a' followed by 0 or 
+                  any number of characters 
+                   - a, abcdef, abcd, etc.
+  Eg-5: abc\.   - This RegEx will match the word 'abc.' - to use '.' as a literal in a regex
+
+  
+  "." - very powerful - includes all words, digits & special characters without a need to escape
+-----------------------------------------------------------------------------------------------------
+
+
+
