@@ -1,6 +1,9 @@
 Regular Expressions
 --------------------
 
+refer - https://javascript.info/regular-expressions
+
+
 What are Regular Expressions/ RegEx? 
 -------------------------------------
 - Allows us to check a series of characters for 'matches'
@@ -18,7 +21,7 @@ Sample RegEx charatcer sets:
 - A RegEx always starts & ends with "/"  - / RegEx /
 - A RegEx is "CASE SENSITIVE"
 - A character set is always mentioned within "[]"
-- A character that needs to be excluded needs to mentioned with a "^" symbol 
+- A character that needs to be excluded needs to be mentioned with a "^" symbol 
   inside the character set - "[^ab]"
 
 Eg: RegEx to include 'a/b' in the first position & must have '000' - /[ab]000/
@@ -48,7 +51,7 @@ Meta characters:
 ----------------
 
 - \d match any digit character (same as [0-9])
-- \w match any word character (a-z A-Z 0-9 and _'s) -> _'s  - unserscores
+- \w match any word character (a-z A-Z 0-9 and _'s) -> _'s  - underscores
 - \s match a whitespace character (spaces, tabs, etc)
 - \t match a tab character omly
 
@@ -96,5 +99,111 @@ If we want to use the literal character of each of them we have to escape them f
   "." - very powerful - includes all words, digits & special characters without a need to escape
 -----------------------------------------------------------------------------------------------------
 
+Starting & Ending patterns:
+----------------------------
+
+- 2 special characters to start & end a pattern
+
+- '^' - The special character is used to indicate the start of the pattern
+      - Behaves as a negate symbol if used inside a character set
+- '$' - The special character is used to indicate the end of the pattern
+
+  Eg-1: ^[a-z]{5}$ - This RegEx will strictly match a 5 letter word
+                     If we add more or less characters to the word, the RegEx will not 
+                     match the word
+  Eg-2: [a-z]{5}$  - This RegEx will match the last 5 characters of a word irrespective of 
+                     what is in the beginning
+  Eg-3: ^[a-z]{5}  - This RegEx will match the first 5 characters of a word irrespective of 
+                     what is in the end
+
+- Both the special characters are used in order to control the pattern to match a specific number 
+  of characters in a word
+-----------------------------------------------------------------------------------------------------
+
+Alternate characters:
+----------------------
+
+- '|' symbol is used to match alternate characters
+- p|t will match either 'p' or 't'
+
+  Eg-1: p|tyre - will match 'p' or 'tyre'
+  Eg-2: (p|t)yre - will match 'pyre' or 'tyre'
+  Eg-3: (pet|toy|crazy) rabbit  - will match 'pet rabbit', 'toy rabbit', 'crazy rabbit'
+  Eg-4: (pet|toy|crazy)? rabbit - will match all the above combinations along with ' rabbit'
+                                  since adding the '?' makes the words in the braces optional
+
+-----------------------------------------------------------------------------------------------------
+
+Differnt flags:
+---------------
+g - global - to match multiple instances of the pattern
+i - case insensitive - to match the patterns irrespective of the cases
+s - single line - Dot matches new line
+m - multiple line - '^', '$' match start/end of the line
+x - extended - ignore whitespace
+X - eXtra - don't allow meaningless escapes
+u - unicode - enables unicode support
+
+and many more...
+
+refer - https://javascript.info/regexp-introduction
+-----------------------------------------------------------------------------------------------------
+
+Form Validation in javascript:
+-------------------------------
+
+  Decalring a RegEx:
+  ------------------
+  2 ways:
+  -------
+    1) var reg = /[a-z]/ig; - This is the most commonly used type of decalration
+       - The RegEx starts and ends within '//'
+       - The 'ig' represent the different flags (i - case insensitive, g - global )
+       - don't enclose within quotes
+    2) var reg = new RegExp(/[a-z]/ig, 'i');
+       - The function RegExp() takes 2 args - the actual reg exp , the required flags
+
+  telephone validation:
+  ---------------------
+  /^\d{11}$/ - RegEx will match a 11 digit number
+
+  username validation:
+  ---------------------
+  /^[a-z\d]{5,12}$/i - RegEx will match a 5-12 digit alpha-numeric word and is case insensitive
+
+  password validation:
+  --------------------
+  /^[\w@-]{8,20}$/ - RegEx will match a 8-20 digit alpha-numeric word which can contain '@, -, _'
+                   - \w covers the characters 'a-zA-Z0-9_'
+  
+  Slug validation:
+  ----------------
+    - Slug is the word present in the URLs - https://sample.com/page-1 -> page-1 is the slug
+
+  /^[a-z\d-]{8,20}$/ - RegEx will match a 8-20 digit alpha-numeric word which can contain '-'
+
+  Email validation:
+  -----------------
+
+            1             2                  3           4
+        (your name) @  (domain)      .   (extension) (.extension)
+        (the boss)  @  (thenetninja) .   (co)        (.uk)
+
+    1. any letters, numbers, dots and/or hyphens
+    2. any letters, numbers and/or hyphens
+    3. any letters
+    4. a dot(.) then any letters
+
+  /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
 
 
+   ([a-z\d\.-]+) - part 1
+   @
+   ([a-z\d-]+)   - part 2
+   \.
+   ([a-z]{2,8})   - part 3
+   (\.[a-z]{2,8}) - part 4
+   ? --> to make part 4 optional
+
+  refer - index.html, styels.css, validations.js
+-----------------------------------------------------------------------------------------------------
