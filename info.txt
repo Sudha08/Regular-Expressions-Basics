@@ -186,8 +186,8 @@ Form Validation in javascript:
   -----------------
 
             1             2                  3           4
-        (your name) @  (domain)      .   (extension) (.extension)
-        (the boss)  @  (thenetninja) .   (co)        (.uk)
+        (your name) @  (domain) .  (extension) (.extension)
+        (sudha)     @  (gmail)  .  (co)        (.uk)
 
     1. any letters, numbers, dots and/or hyphens
     2. any letters, numbers and/or hyphens
